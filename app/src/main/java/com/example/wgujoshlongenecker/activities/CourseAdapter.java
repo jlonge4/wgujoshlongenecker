@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wgujoshlongenecker.R;
 import com.example.wgujoshlongenecker.entities.Course;
-import com.example.wgujoshlongenecker.entities.Term;
 
 import java.util.ArrayList;
 

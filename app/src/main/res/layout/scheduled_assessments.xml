@@ -4,79 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ScheduledAssessments">
+    tools:context=".activities.ScheduledTerms">
 
     <Button
-        android:id="@+id/assessmentsAdd"
-        android:layout_width="108dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="203dp"
-        android:layout_marginBottom="487dp"
+        android:id="@+id/assessmentAdd"
+        android:layout_width="389dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="ADD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/assessmentsDelete"
-        android:layout_width="108dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginBottom="446dp"
-        android:text="DELETE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/assessmentsRView" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="162dp"
         android:layout_height="46dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginBottom="606dp"
-        android:text="Scheduled Assessments"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="96dp"
+        android:text="Scheduled Terms"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/assessmentsRView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ListView
-        android:layout_width="409dp"
-        android:layout_height="417dp"
-        android:layout_marginTop="298dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/assessmentsUpdate"
-        android:layout_width="108dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="162dp"
-        android:layout_marginBottom="528dp"
-        android:text="UPDATE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assessmentsRView"
+        android:layout_width="409dp"
+        android:layout_height="306dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

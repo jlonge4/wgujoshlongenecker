@@ -35,7 +35,7 @@ public TermAdapter(Context context) {
 
         public TermViewHolder(final View view) {
             super(view);
-            nameText = view.findViewById(R.id.nameCourse);
+            nameText = view.findViewById(R.id.nameTerm);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

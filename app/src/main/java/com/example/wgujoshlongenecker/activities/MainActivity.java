@@ -26,10 +26,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        appDB = AppDatabase.getInstance(getApplicationContext());
         button = (Button) findViewById(R.id.button);
         label = (TextView) findViewById(R.id.label);
-
+        Assessments assessment = new Assessments();
+        assessment.setTitle("First Test");
+        assessment.setStartDate("02-21-22");
+        assessment.setEndDate("03-31-22");
+        appDB.assessmentDao().insertAssessment(assessment);
     }
 
     public void toScheduledTerms(View view) {

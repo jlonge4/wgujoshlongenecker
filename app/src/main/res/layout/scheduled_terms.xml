@@ -7,7 +7,7 @@
     tools:context=".activities.ScheduledTerms">
 
     <Button
-        android:id="@+id/termAdd"
+        android:id="@+id/assessmentAdd"
         android:layout_width="389dp"
         android:layout_height="63dp"
         android:layout_marginStart="8dp"
@@ -15,7 +15,7 @@
         android:onClick="addTerm"
         android:text="ADD"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/termsRView" />
+        app:layout_constraintTop_toBottomOf="@+id/assessmentsRView" />
 
     <TextView
         android:id="@+id/textView"
@@ -28,14 +28,14 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/termsRView"
+        app:layout_constraintBottom_toTopOf="@+id/assessmentsRView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/termsRView"
+        android:id="@+id/assessmentsRView"
         android:layout_width="409dp"
         android:layout_height="306dp"
         android:layout_marginStart="1dp"

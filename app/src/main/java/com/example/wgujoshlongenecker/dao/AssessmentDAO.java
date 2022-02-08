@@ -13,8 +13,8 @@ import java.util.List;
 
 @Dao
 public interface AssessmentDAO {
-    @Query("SELECT title FROM assessments_table")
-    List<String> getFoods();
+    @Query("SELECT * FROM assessments_table")
+    List<Assessments> getAssessments();
 //
 //    @Query("SELECT calories FROM user_table WHERE username = :un")
 //    String getUserCalories(String un);

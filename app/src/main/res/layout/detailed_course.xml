@@ -84,13 +84,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/courseView"
+        android:id="@+id/assessmentViewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="34dp"
         android:layout_marginBottom="1dp"
-        android:onClick="viewCourses"
+        android:onClick="viewAssessments"
         android:text="View Associated Assessments"
         app:layout_constraintBottom_toTopOf="@+id/saveTerm"
         app:layout_constraintStart_toStartOf="parent"

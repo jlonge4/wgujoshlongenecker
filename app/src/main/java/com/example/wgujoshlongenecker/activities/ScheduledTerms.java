@@ -3,7 +3,6 @@ package com.example.wgujoshlongenecker.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -25,10 +24,6 @@ public class ScheduledTerms extends AppCompatActivity {
 
     private AppRepo appRepo;
     public static final String EXTRA_MESSAGE = "";
-    private Button termUpdate;
-    private Button termAdd;
-    private Button termDelete;
-    private ListView scheduledView;
     AppDatabase appDB;
     List<Term> allTerms;
     Term selectedTerm = null;
@@ -39,11 +34,8 @@ public class ScheduledTerms extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scheduled_terms);
-
-        termAdd = (Button) findViewById(R.id.termAdd);
-        termUpdate = (Button) findViewById(R.id.courseAdd);
         appDB = AppDatabase.getInstance(getApplicationContext());
-        termsRView = findViewById(R.id.termsRView);
+        termsRView = findViewById(R.id.assessmentsRView);
         termsList = new ArrayList<>();
         appRepo = new AppRepo(getApplication());
         appRepo.getAllTerms();

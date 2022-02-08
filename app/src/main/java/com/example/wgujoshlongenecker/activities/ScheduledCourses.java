@@ -1,7 +1,6 @@
 package com.example.wgujoshlongenecker.activities;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +13,6 @@ import com.example.wgujoshlongenecker.dao.CourseDAO;
 import com.example.wgujoshlongenecker.database.AppDatabase;
 import com.example.wgujoshlongenecker.database.AppRepo;
 import com.example.wgujoshlongenecker.entities.Course;
-import com.example.wgujoshlongenecker.entities.Term;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +34,7 @@ public class ScheduledCourses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scheduled_courses);
         appDB = AppDatabase.getInstance(getApplicationContext());
-        courseAdd = (Button) findViewById(R.id.termAdd);
+        courseAdd = (Button) findViewById(R.id.assessmentAdd);
         courseView = findViewById(R.id.courseView);
         courseList = new ArrayList<>();
         appRepo = new AppRepo(getApplication());
