@@ -12,7 +12,7 @@
         android:layout_marginTop="66dp"
         android:layout_marginBottom="19dp"
         android:text="Term Name"
-        app:layout_constraintBottom_toTopOf="@+id/termName"
+        app:layout_constraintBottom_toTopOf="@+id/courseName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,7 +71,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/termName"
+        android:id="@+id/courseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="67dp"

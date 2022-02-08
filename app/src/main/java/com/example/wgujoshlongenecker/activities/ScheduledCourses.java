@@ -5,9 +5,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wgujoshlongenecker.R;
+import com.example.wgujoshlongenecker.dao.CourseDAO;
+import com.example.wgujoshlongenecker.database.AppDatabase;
+import com.example.wgujoshlongenecker.database.AppRepo;
+import com.example.wgujoshlongenecker.entities.Course;
+import com.example.wgujoshlongenecker.entities.Term;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,24 +25,39 @@ public class ScheduledCourses extends AppCompatActivity {
     private Button courseUpdate;
     private Button courseAdd;
     private Button courseDelete;
+    private RecyclerView courseView;
+    AppDatabase appDB;
+    AppRepo appRepo;
+    CourseDAO courseDao;
+    private ArrayList<Course> courseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scheduled_courses);
-
+        appDB = AppDatabase.getInstance(getApplicationContext());
         courseAdd = (Button) findViewById(R.id.termAdd);
-//        courseUpdate = (Button) findViewById(R.id.termUpdate);
-//        courseDelete = (Button) findViewById(R.id.termDelete);
-
+        courseView = findViewById(R.id.courseView);
+        courseList = new ArrayList<>();
+        appRepo = new AppRepo(getApplication());
+        appRepo.getAllTerms();
+        updateLists();
+        setAdapter();
     }
 
-//    private void updateLists() {
-//        List<String> allTerms = appDB.termDao().getTerms();
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,allTerms);
-//        scheduledView.setAdapter(adapter);
-//        scheduledView.setOnItemClickListener(listClick);
-//        this.allTerms = allTerms;
-//        adapter.notifyDataSetChanged();
-//    }
+    private void setAdapter() {
+        CourseAdapter adapter = new CourseAdapter(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        courseView.setLayoutManager(layoutManager);
+        courseView.setItemAnimator(new DefaultItemAnimator());
+        courseView.setAdapter(adapter);
+        adapter.setCourses(courseList);
+    }
+
+    private void updateLists() {
+        List<Course> allCourses = appDB.courseDao().getCourses();
+        for (Course c : allCourses) {
+            courseList.add(c);
+        }
+    }
 }

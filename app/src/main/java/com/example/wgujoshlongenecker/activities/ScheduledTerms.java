@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -42,7 +41,7 @@ public class ScheduledTerms extends AppCompatActivity {
         setContentView(R.layout.scheduled_terms);
 
         termAdd = (Button) findViewById(R.id.termAdd);
-        termUpdate = (Button) findViewById(R.id.termUpdate);
+        termUpdate = (Button) findViewById(R.id.courseAdd);
         appDB = AppDatabase.getInstance(getApplicationContext());
         termsRView = findViewById(R.id.termsRView);
         termsList = new ArrayList<>();
@@ -75,22 +74,14 @@ public class ScheduledTerms extends AppCompatActivity {
         }
     }
 
-    private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Term term = (Term) scheduledView.getSelectedItem();
-//            selectedTerm = (String) scheduledView.getItemAtPosition(i);
-            selectedTerm = term;
-            System.out.println(selectedTerm);
-        }
-    };
-
-    public void updateTerm(View view) {
-        Intent i = new Intent(this, DetailedTerm.class);
-        String message = String.valueOf(selectedTerm.getTid());
-        System.out.println(message);
-        i.putExtra(EXTRA_MESSAGE, message);
-        startActivity(i);
-    }
+//    private AdapterView.OnItemClickListener listClick = new AdapterView.OnItemClickListener() {
+//        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//            Term term = (Term) scheduledView.getSelectedItem();
+////            selectedTerm = (String) scheduledView.getItemAtPosition(i);
+//            selectedTerm = term;
+//            System.out.println(selectedTerm);
+//        }
+//    };
 
     public void addTerm(View view) {
         Intent i = new Intent(this, AddTerm.class);

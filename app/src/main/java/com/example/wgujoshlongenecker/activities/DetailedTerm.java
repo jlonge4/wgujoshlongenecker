@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +32,7 @@ public class DetailedTerm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_term);
         appDB = AppDatabase.getInstance(getApplicationContext());
-        termName = findViewById(R.id.termName);
+        termName = findViewById(R.id.courseName);
         termStart =  findViewById(R.id.termStart);
         termEnd = findViewById(R.id.termEnd);
         saveTerm = findViewById(R.id.saveTerm);
@@ -73,6 +72,13 @@ public class DetailedTerm extends AppCompatActivity {
         Intent i = new Intent(this, ScheduledTerms.class);
         startActivity(i);
     }
+
+    public void viewCourses(View view) {
+        Intent i = new Intent(this, ScheduledCourses.class);
+        startActivity(i);
+    }
+
+
 
 
 

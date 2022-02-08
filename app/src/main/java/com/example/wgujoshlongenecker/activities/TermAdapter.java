@@ -2,7 +2,6 @@ package com.example.wgujoshlongenecker.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import com.example.wgujoshlongenecker.R;
 import com.example.wgujoshlongenecker.entities.Term;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder>{
     private ArrayList<Term> termsList;
@@ -37,7 +35,7 @@ public TermAdapter(Context context) {
 
         public TermViewHolder(final View view) {
             super(view);
-            nameText = view.findViewById(R.id.nameTerm);
+            nameText = view.findViewById(R.id.nameCourse);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

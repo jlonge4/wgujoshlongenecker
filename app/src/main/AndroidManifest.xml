@@ -27,6 +27,12 @@
         <activity
             android:name=".activities.AddTerm"
             android:exported="false" />
+        <activity
+            android:name=".activities.ScheduledCourses"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DetailedCourse"
+            android:exported="false" />
     </application>
 
 </manifest>

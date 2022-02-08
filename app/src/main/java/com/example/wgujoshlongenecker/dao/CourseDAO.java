@@ -15,8 +15,8 @@ public interface CourseDAO {
     @Query("SELECT title FROM courses_table")
     List<String> getFoods();
 
-    @Query("SELECT title FROM courses_table")
-    List<String> getTerms();
+    @Query("SELECT * FROM courses_table")
+    List<Course> getCourses();
 //
 //    @Query("SELECT calories FROM user_table WHERE username = :un")
 //    String getUserCalories(String un);
