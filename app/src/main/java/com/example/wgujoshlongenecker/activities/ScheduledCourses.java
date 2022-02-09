@@ -1,5 +1,6 @@
 package com.example.wgujoshlongenecker.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -28,11 +29,14 @@ public class ScheduledCourses extends AppCompatActivity {
     AppRepo appRepo;
     CourseDAO courseDao;
     private ArrayList<Course> courseList;
+    String termId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scheduled_courses);
+        Intent intent = getIntent();
+        termId = intent.getStringExtra(ScheduledTerms.EXTRA_MESSAGE);
         appDB = AppDatabase.getInstance(getApplicationContext());
         courseAdd = (Button) findViewById(R.id.assessmentAdd);
         courseView = findViewById(R.id.courseView);
@@ -53,7 +57,7 @@ public class ScheduledCourses extends AppCompatActivity {
     }
 
     private void updateLists() {
-        List<Course> allCourses = appDB.courseDao().getCourses();
+        List<Course> allCourses = appDB.courseDao().getCourses(termId);
         for (Course c : allCourses) {
             courseList.add(c);
         }

@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {Term.class, Course.class, Assessments.class}, exportSchema = false, version = 4)
+@Database(entities = {Term.class, Course.class, Assessments.class}, exportSchema = false, version = 5)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "wguTermScheduler.db";
@@ -33,8 +33,6 @@ public abstract class AppDatabase extends RoomDatabase {
         return instance;
     }
 
-//.allowMainThreadQueries().fallbackToDestructiveMigration()
-
     public abstract TermDAO termDao();
     public abstract AssessmentDAO assessmentDao();
     public abstract CourseDAO courseDao();
@@ -42,7 +40,6 @@ public abstract class AppDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-
 
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override

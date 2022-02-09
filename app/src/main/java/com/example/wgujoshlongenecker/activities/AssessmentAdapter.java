@@ -43,6 +43,7 @@ public AssessmentAdapter(Context context) {
                     final Assessments current = assessmentList.get(position);
                     Intent intent = new Intent(context, ScheduledAssessments.class);
                     intent.putExtra("assessmentName", current.getTitle());
+                    intent.putExtra("courseId" , current.getCourseId());
 //                    intent.putExtra("termStart", current.getStartDate());
 //                    intent.putExtra("termEnd", current.getEndDate());
 //                    intent.putExtra("termID", current.getTid());

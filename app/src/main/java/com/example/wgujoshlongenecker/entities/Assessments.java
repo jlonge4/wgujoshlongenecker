@@ -10,6 +10,9 @@ public class Assessments {
     @PrimaryKey(autoGenerate = true)
     public int aid;
 
+    @ColumnInfo(name = "courseId")
+    public String courseId;
+
     @ColumnInfo(name = "title")
     public String title;
 
@@ -26,6 +29,10 @@ public class Assessments {
     public void setAid(int aid) {
         this.aid = aid;
     }
+
+    public String getCourseId() { return courseId;}
+
+    public void setCourseId(String courseId) { this.courseId = courseId;}
 
     public String getTitle() {
         return title;

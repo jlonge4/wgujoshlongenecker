@@ -46,17 +46,17 @@ public class AppRepo {
         return mAllTerms;
     }
 
-    public List<Course> getAllCourses() {
-        AppDatabase.databaseWriteExecutor.execute(() ->{
-            mAllCourses= courseDAO.getCourses();
-        });
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return mAllCourses;
-    }
+//    public List<Course> getAllCourses() {
+//        AppDatabase.databaseWriteExecutor.execute(() ->{
+//            mAllCourses= courseDAO.getCourses();
+//        });
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        return mAllCourses;
+//    }
 
     public List<Assessments> getAllAssessments() {
         AppDatabase.databaseWriteExecutor.execute(() ->{

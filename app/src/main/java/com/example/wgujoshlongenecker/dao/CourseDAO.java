@@ -12,11 +12,11 @@ import java.util.List;
 
 @Dao
 public interface CourseDAO {
-    @Query("SELECT title FROM courses_table")
-    List<String> getFoods();
+//    @Query("SELECT title FROM courses_table")
+//    List<String> getFoods(String termID);
 
-    @Query("SELECT * FROM courses_table")
-    List<Course> getCourses();
+    @Query("SELECT * FROM courses_table WHERE termId = :termID")
+    List<Course> getCourses(String termID);
 //
 //    @Query("SELECT calories FROM user_table WHERE username = :un")
 //    String getUserCalories(String un);

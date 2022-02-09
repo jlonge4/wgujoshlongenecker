@@ -1,5 +1,6 @@
 package com.example.wgujoshlongenecker.activities;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wgujoshlongenecker.R;
 import com.example.wgujoshlongenecker.database.AppDatabase;
+import com.example.wgujoshlongenecker.entities.Assessments;
 import com.example.wgujoshlongenecker.entities.Term;
 
 import java.util.List;
 
 public class DetailedTerm extends AppCompatActivity {
 
+    private static final String EXTRA_MESSAGE = "";
     private EditText termName;
     private EditText termStart;
     private EditText termEnd;
@@ -24,6 +27,7 @@ public class DetailedTerm extends AppCompatActivity {
     private Button courseView;
     AppDatabase appDB;
     List<String> allTerms;
+    List<Assessments> allassessments;
     Term selectedTerm = null;
     int termIdnew;
 
@@ -63,20 +67,40 @@ public class DetailedTerm extends AppCompatActivity {
     }
 
     public void deleteEditedTerm(View view) {
+        allassessments = appDB.assessmentDao().getAssessments();
         Term term = new Term();
         term.setTid(termIdnew);
         term.setTermName(String.valueOf(termName.getText()));
         term.setStartDate(String.valueOf(termStart.getText()));
         term.setEndDate(String.valueOf(termEnd.getText()));
-        appDB.termDao().delete(term);
-        Intent i = new Intent(this, ScheduledTerms.class);
-        startActivity(i);
+        int hasAssessment = 0;
+        for (Assessments a : allassessments) {
+            if (a.getAid() == term.getTid()) {
+                hasAssessment++;
+            }
+        }
+        if (hasAssessment > 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(DetailedTerm.this);
+            builder.setMessage("Please Remove Courses Before Removing This Term");
+            builder.setTitle("Alert !");
+            builder.setCancelable(true);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        } else {
+            appDB.termDao().delete(term);
+            Intent i = new Intent(this, ScheduledTerms.class);
+            startActivity(i);
+        }
+
     }
 
     public void viewCourses(View view) {
         Intent i = new Intent(this, ScheduledCourses.class);
+        String message = String.valueOf(termIdnew);
+        i.putExtra(EXTRA_MESSAGE, message);
         startActivity(i);
     }
+
 
 
 

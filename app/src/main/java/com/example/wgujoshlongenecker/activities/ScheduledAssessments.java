@@ -1,5 +1,6 @@
 package com.example.wgujoshlongenecker.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -26,6 +27,7 @@ public class ScheduledAssessments extends AppCompatActivity {
     private ArrayList<Assessments> assessmentsList;
     List<Assessments> allAssessments;
     AppRepo appRepo;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class ScheduledAssessments extends AppCompatActivity {
         appDB = AppDatabase.getInstance(getApplicationContext());
         assessmentsRView = findViewById(R.id.assessmentsRView);
         assessmentsList = new ArrayList<>();
+        Intent intent = getIntent();
+        message = intent.getStringExtra("courseId");
 //        appRepo = new AppRepo(getApplication());
 //        appRepo.getAllAssessments();
 
@@ -53,7 +57,7 @@ public class ScheduledAssessments extends AppCompatActivity {
     }
 
     private void updateLists() {
-        List<Assessments> allAssessments = appDB.assessmentDao().getAssessments();
+        List<Assessments> allAssessments = appDB.assessmentDao().getAssociatedAssessments(message);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,allTerms);
 //        scheduledView.setAdapter(adapter);
 //        scheduledView.setOnItemClickListener(listClick);

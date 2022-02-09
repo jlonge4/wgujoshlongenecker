@@ -13,8 +13,11 @@ import java.util.List;
 
 @Dao
 public interface AssessmentDAO {
-    @Query("SELECT * FROM assessments_table")
+    @Query("SELECT * FROM assessments_table ")
     List<Assessments> getAssessments();
+
+    @Query("SELECT * FROM assessments_table WHERE courseId = :courseID")
+    List<Assessments> getAssociatedAssessments(String courseID);
 //
 //    @Query("SELECT calories FROM user_table WHERE username = :un")
 //    String getUserCalories(String un);
@@ -30,5 +33,5 @@ public interface AssessmentDAO {
     void insertAssessment(Assessments ass);
 
     @Delete
-    void delete(Term term);
+    void delete(Assessments assessments);
 }

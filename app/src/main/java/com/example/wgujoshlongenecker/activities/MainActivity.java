@@ -30,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         label = (TextView) findViewById(R.id.label);
         Assessments assessment = new Assessments();
+        assessment.setCourseId("2");
         assessment.setTitle("First Test");
         assessment.setStartDate("02-21-22");
         assessment.setEndDate("03-31-22");
         appDB.assessmentDao().insertAssessment(assessment);
+        appDB.assessmentDao().delete(assessment);
     }
 
     public void toScheduledTerms(View view) {
