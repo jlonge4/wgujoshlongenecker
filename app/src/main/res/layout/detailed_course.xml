@@ -12,7 +12,7 @@
         android:layout_marginTop="66dp"
         android:layout_marginBottom="19dp"
         android:text="Course Title"
-        app:layout_constraintBottom_toTopOf="@+id/courseName"
+        app:layout_constraintBottom_toTopOf="@+id/dcourseName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_marginStart="177dp"
         android:layout_marginBottom="21dp"
         android:text="Start Date"
-        app:layout_constraintBottom_toTopOf="@+id/termStart"
+        app:layout_constraintBottom_toTopOf="@+id/dcourseStart"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -45,12 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:text="End Date"
-        app:layout_constraintBottom_toTopOf="@+id/termEnd"
+        app:layout_constraintBottom_toTopOf="@+id/dcourseEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/termStart"
+        android:id="@+id/dcourseStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/termEnd"
+        android:id="@+id/dcourseEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="103dp"
@@ -72,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/courseName"
+        android:id="@+id/dcourseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="67dp"
@@ -94,7 +94,7 @@
         android:text="View Associated Assessments"
         app:layout_constraintBottom_toTopOf="@+id/saveTerm"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/termEnd"
+        app:layout_constraintTop_toBottomOf="@+id/dcourseEnd"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -104,7 +104,7 @@
         android:layout_marginStart="66dp"
         android:layout_marginEnd="87dp"
         android:layout_marginBottom="6dp"
-        android:onClick="deleteEditedTerm"
+        android:onClick="deleteEditedCourse"
         android:text="DELETE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

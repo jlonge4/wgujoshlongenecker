@@ -17,6 +17,9 @@ public interface CourseDAO {
 
     @Query("SELECT * FROM courses_table WHERE termId = :termID")
     List<Course> getCourses(String termID);
+
+    @Query("DELETE FROM courses_table WHERE cid = :title")
+    void deleteCourse(String title);
 //
 //    @Query("SELECT calories FROM user_table WHERE username = :un")
 //    String getUserCalories(String un);

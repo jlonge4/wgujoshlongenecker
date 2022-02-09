@@ -30,9 +30,9 @@ public class AddTerm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_term);
         appDB = AppDatabase.getInstance(getApplicationContext());
-        termName = findViewById(R.id.courseName);
-        termStart = findViewById(R.id.termStart);
-        termEnd = findViewById(R.id.termEnd);
+        termName = findViewById(R.id.dcourseName);
+        termStart = findViewById(R.id.dcourseStart);
+        termEnd = findViewById(R.id.dcourseEnd);
         saveTerm = findViewById(R.id.saveTerm);
         courseView = findViewById(R.id.courseView);
     }

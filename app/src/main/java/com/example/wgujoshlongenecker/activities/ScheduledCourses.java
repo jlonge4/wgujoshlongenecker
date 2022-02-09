@@ -2,6 +2,7 @@ package com.example.wgujoshlongenecker.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +22,8 @@ import java.util.List;
 
 public class ScheduledCourses extends AppCompatActivity {
 
-    private Button courseUpdate;
+    private static final String EXTRA_MESSAGE = "" ;
     private Button courseAdd;
-    private Button courseDelete;
     private RecyclerView courseView;
     AppDatabase appDB;
     AppRepo appRepo;
@@ -37,12 +37,14 @@ public class ScheduledCourses extends AppCompatActivity {
         setContentView(R.layout.scheduled_courses);
         Intent intent = getIntent();
         termId = intent.getStringExtra(ScheduledTerms.EXTRA_MESSAGE);
+        System.out.println(termId);
         appDB = AppDatabase.getInstance(getApplicationContext());
         courseAdd = (Button) findViewById(R.id.assessmentAdd);
         courseView = findViewById(R.id.courseView);
         courseList = new ArrayList<>();
         appRepo = new AppRepo(getApplication());
-        appRepo.getAllTerms();
+//        appRepo.getAllCourses();
+        appDB.courseDao().getCourses("1");
         updateLists();
         setAdapter();
     }
@@ -61,5 +63,12 @@ public class ScheduledCourses extends AppCompatActivity {
         for (Course c : allCourses) {
             courseList.add(c);
         }
+    }
+
+    public void addCourse(View view) {
+        Intent i = new Intent(this, AddCourses.class);
+        String message = String.valueOf(termId);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
     }
 }

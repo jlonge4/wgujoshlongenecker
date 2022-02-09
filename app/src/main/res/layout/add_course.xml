@@ -10,24 +10,27 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginBottom="10dp"
         android:text="Course Title"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toTopOf="@+id/courseName"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="174dp"
         android:text="Start Date"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="99dp" />
+        app:layout_constraintBottom_toTopOf="@+id/courseStart"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/saveTerm"
+        android:id="@+id/saveCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:onClick="saveTerm"
+        android:onClick="saveCourse"
         android:text="SAVE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,83 +41,134 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginBottom="1dp"
         android:text="End Date"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="174dp" />
+        app:layout_constraintBottom_toTopOf="@+id/courseEnd"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/termStart"
+        android:id="@+id/courseStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="date"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="117dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/termEnd"
+        android:id="@+id/courseEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="18dp"
         android:ems="10"
         android:inputType="date"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="193dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/courseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="45dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="28dp"
         android:text="Status"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="256dp" />
+        app:layout_constraintBottom_toTopOf="@+id/group1"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="20dp"
         android:text="Instructor Info"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="256dp" />
+        app:layout_constraintBottom_toTopOf="@+id/instructorName"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RadioGroup
-        android:layout_width="119dp"
-        android:layout_height="209dp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="304dp">
+        android:id="@+id/group1"
+        android:layout_width="130dp"
+        android:layout_height="226dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="90dp"
+        android:checkedButton="@id/inProgRadio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton8"
+            android:id="@+id/inProgRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="In Progress" />
 
         <RadioButton
-            android:id="@+id/radioButton9"
+            android:id="@+id/completedRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Completed" />
 
         <RadioButton
-            android:id="@+id/radioButton10"
-            android:layout_width="wrap_content"
+            android:id="@+id/planRadio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plan To Take" />
+
+        <RadioButton
+            android:id="@+id/droppedRadio"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dropped" />
 
-        <RadioButton
-            android:id="@+id/radioButton11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Plan To Take" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/instructorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/instructorPhone"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/instructorPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/instructorEmail"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/instructorEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="43dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/saveCourse"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

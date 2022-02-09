@@ -39,9 +39,15 @@ public CourseAdapter(Context context) {
                     final Course current = courseList.get(position);
                     Intent intent = new Intent(context, DetailedCourse.class);
                     intent.putExtra("courseName", current.getTitle());
-//                    intent.putExtra("termStart", current.getStartDate());
-//                    intent.putExtra("termEnd", current.getEndDate());
-//                    intent.putExtra("termID", current.getTid());
+                    intent.putExtra("courseStart", current.getStartDate());
+                    intent.putExtra("termID", current.getTermId());
+                    intent.putExtra("courseEnd", current.getEndDate());
+                    intent.putExtra("courseStatus", current.getStatus());
+                    intent.putExtra("courseNotes", current.getNoteInfo());
+                    intent.putExtra("instructorInfo" , current.getInstructorInfo());
+                    intent.putExtra("courseID", current.getCid());
+
+
 //                    intent.putExtra("position", position);
                     context.startActivity(intent);
                 }

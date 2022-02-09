@@ -33,7 +33,9 @@
         <activity
             android:name=".activities.DetailedCourse"
             android:exported="false" />
-
+        <activity
+            android:name=".activities.AddCourses"
+            android:exported="false" />
         <activity
             android:name=".activities.ScheduledAssessments"
             android:exported="false" />

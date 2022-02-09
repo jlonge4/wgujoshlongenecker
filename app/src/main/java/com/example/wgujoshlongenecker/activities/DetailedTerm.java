@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wgujoshlongenecker.R;
 import com.example.wgujoshlongenecker.database.AppDatabase;
-import com.example.wgujoshlongenecker.entities.Assessments;
+import com.example.wgujoshlongenecker.entities.Course;
 import com.example.wgujoshlongenecker.entities.Term;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class DetailedTerm extends AppCompatActivity {
     private Button courseView;
     AppDatabase appDB;
     List<String> allTerms;
-    List<Assessments> allassessments;
+    List<Course> allCourses;
     Term selectedTerm = null;
     int termIdnew;
 
@@ -36,9 +36,9 @@ public class DetailedTerm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_term);
         appDB = AppDatabase.getInstance(getApplicationContext());
-        termName = findViewById(R.id.courseName);
-        termStart =  findViewById(R.id.termStart);
-        termEnd = findViewById(R.id.termEnd);
+        termName = findViewById(R.id.dcourseName);
+        termStart =  findViewById(R.id.dcourseStart);
+        termEnd = findViewById(R.id.dcourseEnd);
         saveTerm = findViewById(R.id.saveTerm);
         delete = findViewById(R.id.delete);
         courseView = findViewById(R.id.courseView);
@@ -67,19 +67,13 @@ public class DetailedTerm extends AppCompatActivity {
     }
 
     public void deleteEditedTerm(View view) {
-        allassessments = appDB.assessmentDao().getAssessments();
+        allCourses = appDB.courseDao().getCourses(String.valueOf(termIdnew));
         Term term = new Term();
         term.setTid(termIdnew);
         term.setTermName(String.valueOf(termName.getText()));
         term.setStartDate(String.valueOf(termStart.getText()));
         term.setEndDate(String.valueOf(termEnd.getText()));
-        int hasAssessment = 0;
-        for (Assessments a : allassessments) {
-            if (a.getAid() == term.getTid()) {
-                hasAssessment++;
-            }
-        }
-        if (hasAssessment > 0) {
+        if (allCourses.size() > 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(DetailedTerm.this);
             builder.setMessage("Please Remove Courses Before Removing This Term");
             builder.setTitle("Alert !");
@@ -91,7 +85,6 @@ public class DetailedTerm extends AppCompatActivity {
             Intent i = new Intent(this, ScheduledTerms.class);
             startActivity(i);
         }
-
     }
 
     public void viewCourses(View view) {

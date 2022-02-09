@@ -26,8 +26,8 @@ public class Course {
     @ColumnInfo(name = "status")
     public String status;
 
-    @ColumnInfo(name = "mentorInfo")
-    public String mentorInfo;
+    @ColumnInfo(name = "instructorInfo")
+    public String instructorInfo;
 
     @ColumnInfo(name = "noteInfo")
     public String noteInfo;
@@ -80,12 +80,12 @@ public class Course {
         this.status = status;
     }
 
-    public String getMentorInfo() {
-        return mentorInfo;
+    public String getInstructorInfo() {
+        return instructorInfo;
     }
 
-    public void setMentorInfo(String mentorInfo) {
-        this.mentorInfo = mentorInfo;
+    public void setInstructorInfo(String instructorInfo) {
+        this.instructorInfo = instructorInfo;
     }
 
     public String getNoteInfo() {

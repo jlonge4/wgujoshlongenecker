@@ -27,6 +27,7 @@
         android:layout_height="68dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="addCourse"
         android:text="ADD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

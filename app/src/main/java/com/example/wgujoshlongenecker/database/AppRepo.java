@@ -48,7 +48,7 @@ public class AppRepo {
 
 //    public List<Course> getAllCourses() {
 //        AppDatabase.databaseWriteExecutor.execute(() ->{
-//            mAllCourses= courseDAO.getCourses();
+//            mAllCourses= courseDAO.getCourses("1");
 //        });
 //        try {
 //            Thread.sleep(1000);
