@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 
 @Entity(tableName = "courses_table")
 public class Course {
@@ -26,11 +28,15 @@ public class Course {
     @ColumnInfo(name = "status")
     public String status;
 
-    @ColumnInfo(name = "instructorInfo")
-    public String instructorInfo;
+    @ColumnInfo(name = "instructorName")
+    public String instructorName;
 
-    @ColumnInfo(name = "noteInfo")
-    public String noteInfo;
+    @ColumnInfo(name = "instructorPhone")
+    public String instructorPhone;
+
+    @ColumnInfo(name = "instructorEmail")
+    public String instructorEmail;
+
 
     public int getCid() {
         return cid;
@@ -80,19 +86,27 @@ public class Course {
         this.status = status;
     }
 
-    public String getInstructorInfo() {
-        return instructorInfo;
+    public String getInstructorName() {
+        return instructorName;
     }
 
-    public void setInstructorInfo(String instructorInfo) {
-        this.instructorInfo = instructorInfo;
+    public void setInstructorName(String instructorName) {
+        this.instructorName = instructorName;
     }
 
-    public String getNoteInfo() {
-        return noteInfo;
+    public String getInstructorPhone() {
+        return instructorPhone;
     }
 
-    public void setNoteInfo(String noteInfo) {
-        this.noteInfo = noteInfo;
+    public void setInstructorPhone(String instructorPhone) {
+        this.instructorPhone = instructorPhone;
+    }
+
+    public String getInstructorEmail() {
+        return instructorEmail;
+    }
+
+    public void setInstructorEmail(String instructorEmail) {
+        this.instructorEmail = instructorEmail;
     }
 }

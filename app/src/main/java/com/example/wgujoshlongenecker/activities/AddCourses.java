@@ -30,10 +30,8 @@ public class AddCourses extends AppCompatActivity {
     private RadioButton droppedRadio;
     private RadioButton inProgRadio;
     private RadioButton planRadio;
-
+    List<String> notes;
     AppDatabase appDB;
-    List<String> allCourses;
-    Course selectedCourse = null;
     String termId;
 
     @Override
@@ -54,7 +52,6 @@ public class AddCourses extends AppCompatActivity {
         instructorEmail = findViewById(R.id.instructorEmail);
         instructorPhone = findViewById(R.id.instructorPhone);
         instructorName = findViewById(R.id.instructorName);
-//        courseView = findViewById(R.id.courseView);
     }
 
     public void saveCourse(View view) {
@@ -63,11 +60,18 @@ public class AddCourses extends AppCompatActivity {
         course.setTitle(String.valueOf(courseName.getText()));
         course.setStartDate(String.valueOf(courseStart.getText()));
         course.setEndDate(String.valueOf(courseEnd.getText()));
-        course.setInstructorInfo(String.valueOf(instructorName.getText()));
+        course.setInstructorName(String.valueOf(instructorName.getText()));
+        course.setInstructorPhone(String.valueOf(instructorPhone.getText()));
+        course.setInstructorEmail(String.valueOf(instructorEmail.getText()));
         if (inProgRadio.isSelected()) {
             course.setStatus("In Progress");
+        } else if  (droppedRadio.isSelected()) {
+            course.setStatus("Dropped");
+        } else if  (completedRadio.isSelected()) {
+            course.setStatus("Completed");
+        } else {
+            course.setStatus("Plan To Take");
         }
-        course.setNoteInfo("Hard Class");
         appDB.courseDao().insertCourse(course);
         Intent i = new Intent(this, ScheduledCourses.class);
         String message = termId;

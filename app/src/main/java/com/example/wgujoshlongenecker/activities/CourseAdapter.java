@@ -2,6 +2,7 @@ package com.example.wgujoshlongenecker.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,8 +44,9 @@ public CourseAdapter(Context context) {
                     intent.putExtra("termID", current.getTermId());
                     intent.putExtra("courseEnd", current.getEndDate());
                     intent.putExtra("courseStatus", current.getStatus());
-                    intent.putExtra("courseNotes", current.getNoteInfo());
-                    intent.putExtra("instructorInfo" , current.getInstructorInfo());
+                    intent.putExtra("instructorName" , current.getInstructorName());
+                    intent.putExtra("instructorPhone" , current.getInstructorPhone());
+                    intent.putExtra("instructorEmail" , current.getInstructorEmail());
                     intent.putExtra("courseID", current.getCid());
 
 

@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.wgujoshlongenecker.entities.Course;
 import com.example.wgujoshlongenecker.entities.Term;
@@ -28,12 +29,14 @@ public interface CourseDAO {
 //            "last_name LIKE :last LIMIT 1")
 //    User findByName(String first, String last);
 
-//    @Insert
+//    @Update
 //    void insertAll(User... users);
-
     @Insert
     void insertCourse(Course course);
 
     @Delete
     void delete(Course course);
+
+    @Update
+    void update(Course course);
 }

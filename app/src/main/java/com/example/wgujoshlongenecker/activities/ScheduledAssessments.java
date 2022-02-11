@@ -2,6 +2,7 @@ package com.example.wgujoshlongenecker.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,4 +69,11 @@ public class ScheduledAssessments extends AppCompatActivity {
             assessmentsList.add(a);
         }
     }
+
+//    public void addAssessment(View view) {
+//        Intent i = new Intent(this, AddAssessments.class);
+//        String message = String.valueOf(termId);
+//        i.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(i);
+//    }
 }

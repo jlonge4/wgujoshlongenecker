@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {Term.class, Course.class, Assessments.class}, exportSchema = false, version = 6)
+@Database(entities = {Term.class, Course.class, Assessments.class}, exportSchema = false, version = 7)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "wguTermScheduler.db";

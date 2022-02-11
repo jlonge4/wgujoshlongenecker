@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,70 +20,114 @@ public class DetailedCourse extends AppCompatActivity {
 
     private static final String EXTRA_MESSAGE = "";
     private EditText courseName;
-    private EditText termStart;
-    private EditText termEnd;
-    private Button saveTerm;
-    private Button delete;
+    private EditText courseStart;
+    private EditText courseEnd;
+    private EditText instructorPhone;
+    private EditText instructorEmail;
+    private EditText instructorName;
+    private Button saveCourse;
     private Button assessmentViewButton;
+    private Button deleteCourse;
+    private RadioButton completedRadio;
+    private RadioButton droppedRadio;
+    private RadioButton inProgRadio;
+    private RadioButton planRadio;
     AppDatabase appDB;
     List<String> allTerms;
     Term selectedTerm = null;
-    int termIdnew;
+
     String name = "";
     String termId = "";
     int courseId;
+    String start;
+    String end;
+    String status = "";
+    String notes;
+    String cinstructorName;
+    String cinstructorPhone;
+    String cinstructorEmail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_course);
         appDB = AppDatabase.getInstance(getApplicationContext());
-        courseName = findViewById(R.id.dcourseName);
-        termStart =  findViewById(R.id.dcourseStart);
-        termEnd = findViewById(R.id.dcourseEnd);
-        saveTerm = findViewById(R.id.saveTerm);
-        delete = findViewById(R.id.delete);
+        courseName = findViewById(R.id.courseName);
+        courseStart = findViewById(R.id.courseStart);
+        courseEnd = findViewById(R.id.courseEnd);
+        saveCourse = findViewById(R.id.saveCourse);
+        completedRadio = findViewById(R.id.completedRadio);
+        droppedRadio = findViewById(R.id.droppedRadio);
+        planRadio = findViewById(R.id.planRadio);
+        inProgRadio = findViewById(R.id.inProgRadio);
+        instructorEmail = findViewById(R.id.instructorEmail);
+        instructorPhone = findViewById(R.id.instructorPhone);
+        instructorName = findViewById(R.id.instructorName);
+        deleteCourse = findViewById(R.id.deleteCourse);
         assessmentViewButton = findViewById(R.id.assessmentViewButton);
 
         Intent intent = getIntent();
-        String name = getIntent().getStringExtra("courseName");
+        name = getIntent().getStringExtra("courseName");
         termId = getIntent().getStringExtra("termID");
         courseId = getIntent().getIntExtra("courseID", 0);
-//        start = getIntent().getStringExtra("courseStart");
-//        end = getIntent().getStringExtra("courseEnd");
-//        status = getIntent().getStringExtra("courseStatus");
-//        notes = getIntent().getStringExtra("courseNotes");
-//        instructorInfo = getIntent().getStringExtra("instructorInfo");
-
-        System.out.println(termId);
-//        String start = getIntent().getStringExtra("termStart");
-//        String end = getIntent().getStringExtra("termEnd");
-//        termIdnew = getIntent().getIntExtra("termID", 0);
+        start = getIntent().getStringExtra("courseStart");
+        end = getIntent().getStringExtra("courseEnd");
+        status = intent.getStringExtra("courseStatus");
+        notes = getIntent().getStringExtra("courseNotes");
+        cinstructorName = getIntent().getStringExtra("instructorName");
+        cinstructorPhone = getIntent().getStringExtra("instructorPhone");
+        cinstructorEmail= getIntent().getStringExtra("instructorEmail");
+        switch (status) {
+            case "Dropped":
+                droppedRadio.setSelected(true);
+                break;
+            case "In Progress":
+                inProgRadio.setSelected(true);
+                break;
+            case "Plan To Take":
+                planRadio.setSelected(true);
+                break;
+            default:
+                completedRadio.setSelected(true);
+                break;
+        }
         courseName.setText(name);
-//        termStart.setText(start);
-//        termEnd.setText(end);
-//        System.out.println(termIdnew);
+        courseStart.setText(start);
+        courseEnd.setText(end);
+        instructorName.setText(cinstructorName);
+        instructorPhone.setText(cinstructorPhone);
+        instructorEmail.setText(cinstructorEmail);
     }
 
-//    public void saveEditedCourse(View view) {
-//        Course course = new Course();
-//        course.setTid(termIdnew);
-//        course.setTermName(String.valueOf(termName.getText()));
-//        course.setStartDate(String.valueOf(termStart.getText()));
-//        course.setEndDate(String.valueOf(termEnd.getText()));
-//        appDB.courseDao().update(course);
-//        Intent i = new Intent(this, ScheduledTerms.class);
-//        startActivity(i);
-//    }
+    public void saveEditedCourse(View view) {
+        Course course = new Course();
+        course.setCid(courseId);
+        course.setTermId(String.valueOf(termId));
+        course.setTitle(String.valueOf(courseName.getText()));
+        course.setStartDate(String.valueOf(courseStart.getText()));
+        course.setEndDate(String.valueOf(courseEnd.getText()));
+        if (droppedRadio.isSelected()) {
+            course.setStatus("Dropped");
+        } else if (inProgRadio.isSelected()) {
+            course.setStatus("In Progress");
+        } else if (planRadio.isSelected()) {
+            course.setStatus("Plan To Take");
+        } else {
+            course.setStatus("Completed");
+        }
+        course.setInstructorName(String.valueOf(instructorName.getText()));
+        course.setInstructorPhone(String.valueOf(instructorPhone.getText()));
+        course.setInstructorEmail(String.valueOf(instructorEmail.getText()));
+        appDB.courseDao().update(course);
+        Intent i = new Intent(this, ScheduledCourses.class);
+        String message = termId;
+        System.out.println(message);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
 
     public void deleteEditedCourse(View view) {
-//        Course course = new Course();
-//        course.setTermId(String.valueOf(termId));
-//        course.setTitle(String.valueOf(courseName.getText()));
-//        course.setStartDate("020202");
-//        course.setEndDate("0202020");
-//        course.setStatus("In Progress");
-//        course.setNoteInfo("empty");
         appDB.courseDao().deleteCourse(String.valueOf(courseId));
         Intent i = new Intent(this, ScheduledCourses.class);
         String message = termId;
@@ -92,7 +137,7 @@ public class DetailedCourse extends AppCompatActivity {
     }
 //
     public void viewAssessments(View view) {
-        Intent i = new Intent(this, ScheduledCourses.class);
+        Intent i = new Intent(this, ScheduledAssessments.class);
         startActivity(i);
     }
 
