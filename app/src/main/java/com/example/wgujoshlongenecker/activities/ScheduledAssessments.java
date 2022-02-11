@@ -41,8 +41,6 @@ public class ScheduledAssessments extends AppCompatActivity {
         assessmentsList = new ArrayList<>();
         Intent intent = getIntent();
         message = intent.getStringExtra("courseId");
-//        appRepo = new AppRepo(getApplication());
-//        appRepo.getAllAssessments();
 
         updateLists();
         setAdapter();

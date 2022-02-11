@@ -78,20 +78,30 @@ public class DetailedCourse extends AppCompatActivity {
         cinstructorName = getIntent().getStringExtra("instructorName");
         cinstructorPhone = getIntent().getStringExtra("instructorPhone");
         cinstructorEmail= getIntent().getStringExtra("instructorEmail");
-        switch (status) {
-            case "Dropped":
-                droppedRadio.setSelected(true);
-                break;
-            case "In Progress":
-                inProgRadio.setSelected(true);
-                break;
-            case "Plan To Take":
-                planRadio.setSelected(true);
-                break;
-            default:
-                completedRadio.setSelected(true);
-                break;
+        System.out.println(status);
+        if (status.equals("Dropped")) {
+            droppedRadio.setChecked(true);
+        } else if (status.equals("In Progress")) {
+            inProgRadio.setChecked(true);
+        } else if (status.equals("Plan To Take")) {
+            planRadio.setChecked(true);
+        } else {
+            completedRadio.setChecked(true);
         }
+//        switch (status) {
+//            case "Dropped":
+//                droppedRadio.setSelected(true);
+//                break;
+//            case "In Progress":
+//                inProgRadio.setSelected(true);
+//                break;
+//            case "Plan To Take":
+//                planRadio.setSelected(true);
+//                break;
+//            default:
+//                completedRadio.setSelected(true);
+//                break;
+//        }
         courseName.setText(name);
         courseStart.setText(start);
         courseEnd.setText(end);
@@ -107,11 +117,11 @@ public class DetailedCourse extends AppCompatActivity {
         course.setTitle(String.valueOf(courseName.getText()));
         course.setStartDate(String.valueOf(courseStart.getText()));
         course.setEndDate(String.valueOf(courseEnd.getText()));
-        if (droppedRadio.isSelected()) {
+        if (droppedRadio.isChecked()) {
             course.setStatus("Dropped");
-        } else if (inProgRadio.isSelected()) {
+        } else if (inProgRadio.isChecked()) {
             course.setStatus("In Progress");
-        } else if (planRadio.isSelected()) {
+        } else if (planRadio.isChecked()) {
             course.setStatus("Plan To Take");
         } else {
             course.setStatus("Completed");
