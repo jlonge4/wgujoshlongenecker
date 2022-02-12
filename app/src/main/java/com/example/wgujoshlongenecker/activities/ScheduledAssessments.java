@@ -22,6 +22,7 @@ import java.util.List;
 
 public class ScheduledAssessments extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "";
     private Button assessmentAdd;
     AppDatabase appDB;
     private RecyclerView assessmentsRView;
@@ -34,13 +35,14 @@ public class ScheduledAssessments extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scheduled_assessments);
-
+        Intent intent = getIntent();
+        message = intent.getStringExtra(DetailedCourse.EXTRA_MESSAGE);
         assessmentAdd = (Button) findViewById(R.id.assessmentAdd);
         appDB = AppDatabase.getInstance(getApplicationContext());
         assessmentsRView = findViewById(R.id.assessmentsRView);
         assessmentsList = new ArrayList<>();
-        Intent intent = getIntent();
-        message = intent.getStringExtra("courseId");
+        System.out.println(message);
+
 
         updateLists();
         setAdapter();
@@ -68,10 +70,10 @@ public class ScheduledAssessments extends AppCompatActivity {
         }
     }
 
-//    public void addAssessment(View view) {
-//        Intent i = new Intent(this, AddAssessments.class);
-//        String message = String.valueOf(termId);
-//        i.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(i);
-//    }
+    public void addAssessment(View view) {
+        Intent i = new Intent(this, AddAssessments.class);
+//        String message2 = String.valueOf(message);
+        i.putExtra(EXTRA_MESSAGE, message);
+        startActivity(i);
+    }
 }

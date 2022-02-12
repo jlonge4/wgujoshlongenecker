@@ -21,9 +21,6 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
     private final Context context;
     private final LayoutInflater mInflater;
 
-//    public TermAdapter(ArrayList<Term> termsList) {
-//        this.termsList = termsList;
-//    }
 public AssessmentAdapter(Context context) {
     mInflater = LayoutInflater.from(context);
     this.context = context;
@@ -41,13 +38,13 @@ public AssessmentAdapter(Context context) {
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     final Assessments current = assessmentList.get(position);
-                    Intent intent = new Intent(context, ScheduledAssessments.class);
+                    Intent intent = new Intent(context, DetailedAssessment.class);
                     intent.putExtra("assessmentName", current.getTitle());
                     intent.putExtra("courseId" , current.getCourseId());
-//                    intent.putExtra("termStart", current.getStartDate());
-//                    intent.putExtra("termEnd", current.getEndDate());
-//                    intent.putExtra("termID", current.getTid());
-//                    intent.putExtra("position", position);
+                    intent.putExtra("assessmentStart", current.getStartDate());
+                    intent.putExtra("assessmentEnd" , current.getEndDate());
+                    intent.putExtra("aID" , current.getAid());
+                    intent.putExtra("cID", current.getCourseId());
                     context.startActivity(intent);
                 }
             });
@@ -63,15 +60,12 @@ public AssessmentAdapter(Context context) {
 
     @Override
     public void onBindViewHolder(@NonNull AssessmentAdapter.AssessmentViewHolder holder, int position) {
-//        String name = termsList.get(position).getTermName();
-//        holder.nameText.setText(name);
         if (assessmentList != null) {
             final Assessments current = assessmentList.get(position);
             holder.nameAssessment.setText(current.getTitle());
         } else {
             holder.nameAssessment.setText("No Word");
         }
-
     }
 
     @Override

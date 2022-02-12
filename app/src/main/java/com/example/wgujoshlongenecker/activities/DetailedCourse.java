@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DetailedCourse extends AppCompatActivity {
 
-    private static final String EXTRA_MESSAGE = "";
+    public static final String EXTRA_MESSAGE = "";
     private EditText courseName;
     private EditText courseStart;
     private EditText courseEnd;
@@ -148,7 +148,10 @@ public class DetailedCourse extends AppCompatActivity {
 //
     public void viewAssessments(View view) {
         Intent i = new Intent(this, ScheduledAssessments.class);
+        i.putExtra(EXTRA_MESSAGE, String.valueOf(courseId));
+        System.out.println(String.valueOf(courseId));
         startActivity(i);
+
     }
 
 

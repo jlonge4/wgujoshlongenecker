@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ScheduledCourses extends AppCompatActivity {
 
-    private static final String EXTRA_MESSAGE = "" ;
+    public static final String EXTRA_MESSAGE = "";
     private Button courseAdd;
     private RecyclerView courseView;
     AppDatabase appDB;
@@ -44,7 +44,7 @@ public class ScheduledCourses extends AppCompatActivity {
         courseList = new ArrayList<>();
         appRepo = new AppRepo(getApplication());
 //        appRepo.getAllCourses();
-        appDB.courseDao().getCourses("1");
+//        appDB.courseDao().getCourses("1");
         updateLists();
         setAdapter();
     }
