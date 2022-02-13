@@ -45,6 +45,7 @@ public AssessmentAdapter(Context context) {
                     intent.putExtra("assessmentEnd" , current.getEndDate());
                     intent.putExtra("aID" , current.getAid());
                     intent.putExtra("cID", current.getCourseId());
+                    intent.putExtra("type" , current.getType());
                     context.startActivity(intent);
                 }
             });

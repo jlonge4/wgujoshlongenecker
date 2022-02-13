@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <Button
         android:id="@+id/aSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginStart="540dp"
+        android:layout_marginBottom="256dp"
         android:onClick="saveEditedAssessment"
         android:text="SAVE"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,11 +24,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="26dp"
         android:text="Assessment Title"
-        app:layout_constraintBottom_toTopOf="@+id/aName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,17 +34,18 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="79dp"
         android:text="Select a Type"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aName" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/aName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/aStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="67dp"
         android:layout_marginBottom="15dp"
         android:ems="10"
         android:inputType="date"
@@ -53,8 +56,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="174dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginBottom="20dp"
         android:text="Start Date"
         app:layout_constraintBottom_toTopOf="@+id/aStart"
         app:layout_constraintStart_toStartOf="parent" />
@@ -63,20 +66,20 @@
         android:id="@+id/aName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="174dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="143dp"
+        android:layout_marginBottom="14dp"
         android:text="End Date"
         app:layout_constraintBottom_toTopOf="@+id/aEnd"
         app:layout_constraintStart_toStartOf="parent" />
@@ -85,20 +88,20 @@
         android:id="@+id/aEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginBottom="21dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/aSave"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="72dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="87dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toEndOf="@+id/aStart"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <RadioButton
@@ -118,8 +121,8 @@
         android:id="@+id/aDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="32dp"
         android:onClick="deleteEditedAssessment"
         android:text="DELETE"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -129,11 +132,12 @@
         android:id="@+id/goHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="58dp"
         android:onClick="goHome"
         android:text="HOME"
-        app:layout_constraintEnd_toStartOf="@+id/aDelete"
-        app:layout_constraintTop_toBottomOf="@+id/aEnd" />
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/aSave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

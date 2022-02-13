@@ -1,7 +1,15 @@
 package com.example.wgujoshlongenecker.activities;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +22,11 @@ import com.example.wgujoshlongenecker.database.AppDatabase;
 import com.example.wgujoshlongenecker.entities.Course;
 import com.example.wgujoshlongenecker.entities.Term;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DetailedCourse extends AppCompatActivity {
 
@@ -46,6 +58,8 @@ public class DetailedCourse extends AppCompatActivity {
     String cinstructorName;
     String cinstructorPhone;
     String cinstructorEmail;
+    public static int numAlert;
+    long date;
 
 
     @Override
@@ -78,7 +92,6 @@ public class DetailedCourse extends AppCompatActivity {
         cinstructorName = getIntent().getStringExtra("instructorName");
         cinstructorPhone = getIntent().getStringExtra("instructorPhone");
         cinstructorEmail= getIntent().getStringExtra("instructorEmail");
-        System.out.println(status);
         if (status.equals("Dropped")) {
             droppedRadio.setChecked(true);
         } else if (status.equals("In Progress")) {
@@ -88,26 +101,67 @@ public class DetailedCourse extends AppCompatActivity {
         } else {
             completedRadio.setChecked(true);
         }
-//        switch (status) {
-//            case "Dropped":
-//                droppedRadio.setSelected(true);
-//                break;
-//            case "In Progress":
-//                inProgRadio.setSelected(true);
-//                break;
-//            case "Plan To Take":
-//                planRadio.setSelected(true);
-//                break;
-//            default:
-//                completedRadio.setSelected(true);
-//                break;
-//        }
         courseName.setText(name);
         courseStart.setText(start);
         courseEnd.setText(end);
         instructorName.setText(cinstructorName);
         instructorPhone.setText(cinstructorPhone);
         instructorEmail.setText(cinstructorEmail);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu_real, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.moreVertical:
+                Intent viewNotes = new Intent(DetailedCourse.this, ViewNotes.class);
+                viewNotes.putExtra(EXTRA_MESSAGE, String.valueOf(name));
+                startActivity(viewNotes);
+                return true;
+            case R.id.addStart:
+                    Intent intent=new Intent(DetailedCourse.this,Receiver.class);
+                    intent.putExtra("key","Course Reminder for: " + courseName + " at " + courseStart);
+                    PendingIntent sender= PendingIntent.getBroadcast(DetailedCourse.this,++numAlert,intent,0);
+                    AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+
+                    String start = courseStart.getText().toString();
+                    Date startDate = null;
+                    try {
+                        startDate = sdf.parse(start);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    long trigger = startDate.getTime();
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                    return true;
+
+            case R.id.addEnd:
+                    Intent i=new Intent(DetailedCourse.this,Receiver.class);
+                    i.putExtra("key","Course Reminder for: " + courseName + " at " + courseEnd);
+                    PendingIntent sender2= PendingIntent.getBroadcast(DetailedCourse.this,++numAlert,i,0);
+                    AlarmManager alarmManager2=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+                    SimpleDateFormat sdf2 = new SimpleDateFormat("MM/dd/yyyy");
+
+                    String end = courseEnd.getText().toString();
+                    Date endDate = null;
+                    try {
+                        endDate = sdf2.parse(end);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    long trigger2 = endDate.getTime();
+                    alarmManager2.set(AlarmManager.RTC_WAKEUP, trigger2, sender2);
+                    return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void saveEditedCourse(View view) {
@@ -139,6 +193,7 @@ public class DetailedCourse extends AppCompatActivity {
 
     public void deleteEditedCourse(View view) {
         appDB.courseDao().deleteCourse(String.valueOf(courseId));
+        appDB.noteDao().deleteNote(String.valueOf(name));
         Intent i = new Intent(this, ScheduledCourses.class);
         String message = termId;
         System.out.println(message);
@@ -153,6 +208,14 @@ public class DetailedCourse extends AppCompatActivity {
         startActivity(i);
 
     }
+
+//    private void updateLabel() {
+//        String myFormat = "MM/dd/yyyy";
+//        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+//        String dateStart = String.valueOf(courseStart.getText());
+//        courseStart.setText(sdf.format(dateStart));
+//        //editEnd.setText(sdf.format(myCalendar.getTime()));
+//    }
 
 
 

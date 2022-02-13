@@ -16,6 +16,9 @@ public class Assessments {
     @ColumnInfo(name = "title")
     public String title;
 
+    @ColumnInfo(name = "type")
+    public String type;
+
     @ColumnInfo(name = "startDate")
     public String startDate;
 
@@ -40,6 +43,14 @@ public class Assessments {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getStartDate() {

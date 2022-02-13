@@ -43,8 +43,6 @@ public class ScheduledCourses extends AppCompatActivity {
         courseView = findViewById(R.id.courseView);
         courseList = new ArrayList<>();
         appRepo = new AppRepo(getApplication());
-//        appRepo.getAllCourses();
-//        appDB.courseDao().getCourses("1");
         updateLists();
         setAdapter();
     }

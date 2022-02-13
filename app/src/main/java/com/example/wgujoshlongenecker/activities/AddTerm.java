@@ -35,6 +35,8 @@ public class AddTerm extends AppCompatActivity {
         termEnd = findViewById(R.id.dcourseEnd);
         saveTerm = findViewById(R.id.saveTerm);
         courseView = findViewById(R.id.courseView);
+        termStart.setText("MM/dd/YYY");
+        termEnd.setText("MM/dd/YYY");
     }
 
     public void saveTerm(View view) {
