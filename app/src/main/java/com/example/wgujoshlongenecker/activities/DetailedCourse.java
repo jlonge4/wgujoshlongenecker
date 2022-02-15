@@ -206,7 +206,6 @@ public class DetailedCourse extends AppCompatActivity {
         i.putExtra(EXTRA_MESSAGE, String.valueOf(courseId));
         System.out.println(String.valueOf(courseId));
         startActivity(i);
-
     }
 
 //    private void updateLabel() {
@@ -216,12 +215,4 @@ public class DetailedCourse extends AppCompatActivity {
 //        courseStart.setText(sdf.format(dateStart));
 //        //editEnd.setText(sdf.format(myCalendar.getTime()));
 //    }
-
-
-
-
-
-
-
-
 }

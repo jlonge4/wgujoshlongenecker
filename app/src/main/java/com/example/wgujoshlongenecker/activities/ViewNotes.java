@@ -18,6 +18,7 @@ import com.example.wgujoshlongenecker.database.AppDatabase;
 import com.example.wgujoshlongenecker.entities.CourseNotes;
 import com.example.wgujoshlongenecker.entities.Term;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewNotes extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class ViewNotes extends AppCompatActivity {
     private ListView noteView;
     AppDatabase appDB;
     List<String> allNotes;
-    String courseNotes;
+    String courseNotes = " ";
 
 
     @Override
@@ -69,8 +70,13 @@ public class ViewNotes extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.moreOptions:
+                courseNotes =" ";
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
+                for (String s : allNotes) {
+                    courseNotes = courseNotes + s + " ; ";
+                }
+                courseNotes = "Notes added:" + courseNotes;
                 sendIntent.putExtra(Intent.EXTRA_TEXT, courseNotes);
                 sendIntent.putExtra(Intent.EXTRA_TITLE, "Course Notes");
                 sendIntent.setType("text/plain");

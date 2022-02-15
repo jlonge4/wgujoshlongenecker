@@ -10,6 +10,7 @@ import com.example.wgujoshlongenecker.entities.Course;
 import com.example.wgujoshlongenecker.entities.CourseNotes;
 import com.example.wgujoshlongenecker.entities.Term;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
