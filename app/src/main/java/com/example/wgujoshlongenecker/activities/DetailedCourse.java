@@ -127,7 +127,7 @@ public class DetailedCourse extends AppCompatActivity {
                 return true;
             case R.id.addStart:
                     Intent intent=new Intent(DetailedCourse.this,Receiver.class);
-                    intent.putExtra("key","Course Reminder for: " + courseName + " at " + courseStart);
+                    intent.putExtra("key","Course Reminder for: " + courseName.getText() + " at " + courseStart.getText());
                     PendingIntent sender= PendingIntent.getBroadcast(DetailedCourse.this,++numAlert,intent,0);
                     AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
                     SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -145,7 +145,7 @@ public class DetailedCourse extends AppCompatActivity {
 
             case R.id.addEnd:
                     Intent i=new Intent(DetailedCourse.this,Receiver.class);
-                    i.putExtra("key","Course Reminder for: " + courseName + " at " + courseEnd);
+                    i.putExtra("key","Course Reminder for: " + courseName.getText() + " at " + courseEnd.getText());
                     PendingIntent sender2= PendingIntent.getBroadcast(DetailedCourse.this,++numAlert,i,0);
                     AlarmManager alarmManager2=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
                     SimpleDateFormat sdf2 = new SimpleDateFormat("MM/dd/yyyy");

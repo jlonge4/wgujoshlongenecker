@@ -118,7 +118,7 @@ public class DetailedAssessment extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.addaStart:
                 Intent intent=new Intent(DetailedAssessment.this,Receiver.class);
-                intent.putExtra("key","Course Reminder for: " + aName + " at " + aStart);
+                intent.putExtra("key","Course Reminder for: " + aName.getText() + " at " + aStart.getText());
                 PendingIntent sender= PendingIntent.getBroadcast(DetailedAssessment.this,++numAlert,intent,0);
                 AlarmManager alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -136,7 +136,7 @@ public class DetailedAssessment extends AppCompatActivity {
 
             case R.id.addaEnd:
                 Intent i=new Intent(DetailedAssessment.this,Receiver.class);
-                i.putExtra("key","Course Reminder for: " + aName + " at " + aEnd);
+                i.putExtra("key","Course Reminder for: " + aName.getText() + " at " + aEnd.getText());
                 PendingIntent sender2= PendingIntent.getBroadcast(DetailedAssessment.this,++numAlert,i,0);
                 AlarmManager alarmManager2=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
                 SimpleDateFormat sdf2 = new SimpleDateFormat("MM/dd/yyyy");

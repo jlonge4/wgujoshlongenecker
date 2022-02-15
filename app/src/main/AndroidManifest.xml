@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wgujoshlongenecker">
+
+        <receiver
+            android:name=".activities.Receiver"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">
@@ -49,5 +56,6 @@
             android:name=".activities.ViewNotes"
             android:exported="false" />
     </application>
+
 
 </manifest>
